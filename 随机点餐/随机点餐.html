@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .menu {
+      width: 800px;
+      margin: 100px auto;
+      text-align: center;
+      position: relative;
+    }
+
+    td {
+      width: 120px;
+      text-align: center;
+      height: 30px;
+      background-color: #8558d6;
+      cursor: pointer;
+    }
+
+    .dishes {
+      background-color: orange;
+      height: 40px;
+      font-size: 18px;
+    }
+
+    .current {
+      background-color: #f40;
+    }
+
+    input {
+      width: 160px;
+      height: 60px;
+      background-color: #f10215;
+      color: darkblue;
+      font-size: 28px;
+      outline: none;
+      border: 1px solid #8558d6;
+      margin: 20px;
+      border-radius: 30px;
+      line-height: 60px;
+      position: relative;
+      z-index: 8;
+    }
+
+    .nav {
+      width: 800px;
+      /* height: 336px; */
+      position: absolute;
+      top: 0;
+      /* bottom: 0;
+				right: 0;
+				left: 0; */
+      margin: auto;
+      background-color: #c81623;
+      /* display: none; */
+      color: cyan;
+      border: 2px solid darkgreen;
+      border-radius: 168px;
+      padding: 50px;
+      z-index: 10;
+    }
+
+    .nav h3 {
+      height: 50px;
+    }
+
+    .nav p {
+      color: fuchsia;
+      line-height: 50px;
+      font-size: 26px;
+    }
+
+    .nav span {
+      color: blue;
+      font-weight: 700;
+      margin-left: 20px;
+      font-size: 28px;
+    }
+
+    .nav h4 {
+      color: chartreuse;
+      margin: 30px;
+    }
+
+    .barrier {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      background: #000000;
+      opacity: 0.6;
+      display: none;
+      z-index: 9;
+    }
+
+    .nav em {
+      display: block;
+      font-style: normal;
+      margin: 20px auto;
+      background-color: darkmagenta;
+      width: 120px;
+      line-height: 30px;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    .nav em:hover {
+      background-color: deeppink;
+    }
+
+    .nav i {
+      color: hotpink;
+      font-style: normal;
+      position: absolute;
+      top: 28px;
+      right: 36px;
+      border: 1px solid #000;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      border-radius: 50%;
+      background-color: #7fff00;
+      cursor: pointer;
+      font-size: 22px;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    .zoom {
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 376px;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .food {
+      background-color: #f40;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 遮挡层 -->
+  <div class="barrier"></div>
+  <!-- 最大的div -->
+  <div class="menu" id="j_menu">
+    <!-- 上菜的div遮挡层 -->
+    <div class="zoom" id="j_zoom">
+      <!-- 上菜的div -->
+      <div class="nav" id="dv">
+        <i>X</i>
+        <h3>欢迎光临小店</h3>
+        <p>老板，您点了:<span></span></p>
+        <h4>祝您用餐愉快</h4>
+        <em>继续点餐</em>
+      </div>
+    </div>
+    <table border="1" cellspacing="0" cellpadding="0">
+      <tr>
+        <th class="dishes" colspan="6">满汉全席</th>
+      </tr>
+      <tr>
+        <td>肉丝跑蛋</td>
+        <td>香菇青菜</td>
+        <td>韭菜炒蛋</td>
+        <td>酱爆茄子</td>
+        <td>番茄炒蛋</td>
+        <td>黄瓜炒蛋</td>
+      </tr>
+      <tr>
+        <td>苦瓜肉丝</td>
+        <td>咸肉冬瓜</td>
+        <td>雪菜毛笋</td>
+        <td>芹菜三丝</td>
+        <td>青椒炒鸡蛋</td>
+        <td>糖醋里脊</td>
+      </tr>
+      <tr>
+        <td>手撕包心菜</td>
+        <td>青椒毛豆肉丝</td>
+        <td>咸水鸭</td>
+        <td>回锅肉</td>
+        <td>三杯鸡</td>
+        <td>麻婆豆腐</td>
+      </tr>
+      <tr>
+        <td>水煮鱼片</td>
+        <td>水煮牛肉</td>
+        <td>爆炒牛肉</td>
+        <td>酸笋牛肉</td>
+        <td>鱼香肉丝</td>
+        <td>榨菜肉丝</td>
+      </tr>
+      <tr>
+        <td>肉丝跑蛋</td>
+        <td>香菇青菜</td>
+        <td>韭菜炒蛋</td>
+        <td>酱爆茄子</td>
+        <td>番茄炒蛋</td>
+        <td>黄瓜炒蛋</td>
+      </tr>
+      <tr>
+        <td>手撕包心菜</td>
+        <td>青椒毛豆肉丝</td>
+        <td>减水鸭</td>
+        <td>回锅肉</td>
+        <td>三杯鸡</td>
+        <td>麻婆豆腐</td>
+      </tr>
+    </table>
+
+    <input type="button" value="点菜" id="btn1" />
+    <input type="button" value="上菜" id="btn2" />
+  </div>
+  <script src="common.js"></script>
+  <script>
+    //获取点菜按钮
+    var btn1 = document.querySelector("#btn1");
+    //获取上菜按钮
+    var btn2 = document.querySelector("#btn2");
+    //获取td标签
+    var tdObjs = document.getElementsByTagName("td");
+
+    // 获取上菜的div
+    var dv = document.getElementById("dv");
+    // 获取菜名标签
+    var span = dv.querySelector("span");
+    // 获取遮挡层
+    var barrier = document.querySelector(".barrier");
+    // 获取继续点餐按钮
+    var em = dv.querySelector("em");
+    // 获取关闭按钮
+    var iObj = dv.querySelector("i");
+    //定义一个变量,储存菜名
+    var food = "";
+    //定义一个变量,储存定时器id;
+    var timer;
+
+    // 1).注册随机点菜事件
+    //为点菜按钮注册点击事件
+    btn1.onclick = function () {
+      //每次点击按钮先清理一次定时器,避免定时器开启多个定时器
+      clearInterval(timer);
+      //开启一个定时器
+      timer = setInterval(function () {
+        //定义每次执行定时器的时候,产生一个0~tdObjs.length的随机数
+        var num = Math.floor(Math.random() * tdObjs.length);
+        //循环遍历td标签,排他事件
+        for (var i = 0; i < tdObjs.length; i++) {
+          tdObjs[i].removeAttribute("class");
+        }
+        //把随机数赋值给tdObj的索引值,设置他的背景颜色
+        tdObjs[num].className = "current";
+        //储存菜名
+        food = tdObjs[num].innerHTML;
+      }, 100);
+    };
+
+    // 2).展示出随机点菜选中的菜品
+    //为btn2注册鼠标点击事件
+    btn2.onclick = function () {
+      //清理btn1按钮的定时器
+      clearInterval(timer);
+      // 把菜名显示到点菜的div中
+      span.innerHTML = food;
+      // 显示点菜的div和遮挡层
+      dv.style.display = "block";
+      barrier.style.display = "block";
+      // 获取最外面div的宽度
+      var width = my$("j_menu").offsetWidth;
+      // 获取最外面div的高度
+      var height = my$("j_menu").offsetHeight;
+      var josn = {
+        width: width,
+        height: 700
+      };
+      animate(my$("j_zoom"), josn);
+    };
+
+    //3).为按钮注册鼠标按下和抬起时显示不同的颜色
+    //定义一个变量,储存鼠标按下之前的背景颜色
+    var bgc = "";
+    //为btn1注册鼠标按下事件
+    btn1.onmousedown = function () {
+      // 每次点菜的时候,把菜单清空一次
+      food = "";
+      //把当前的背景颜色赋值给bgc
+      bgc = this.style.backgroundColor;
+      this.style.backgroundColor = "#FFC0CB";
+    };
+    //为btn1注册鼠标抬起事件
+    btn1.onmouseup = function () {
+      //恢复之前的背景颜色
+      this.style.backgroundColor = bgc;
+    };
+    //定义一个变量,储存鼠标按下之前的背景颜色
+
+    //为btn1注册鼠标按下事件
+    btn2.onmousedown = function () {
+      //把当前的背景颜色赋值给bgc
+      bgc = this.style.backgroundColor;
+      this.style.backgroundColor = "#FFC0CB";
+    };
+    //为btn1注册鼠标抬起事件
+    btn2.onmouseup = function () {
+      //恢复之前的背景颜色
+      this.style.backgroundColor = bgc;
+    };
+    //4).继续点餐按钮点击后缓动遮挡展示菜品的div,回调函数隐藏div
+    // 继续点餐按钮注册点击事件
+    em.onclick = function () {
+      str = [];
+      for (var i = 0; i < tdObjs.length; i++) {
+        tdObjs[i].style.backgroundColor = bgc;
+      }
+      var josn2 = {
+        width: 0,
+        height: 0
+      };
+      animate(my$("j_zoom"), josn2, function () {
+        dv.style.display = "none";
+        barrier.style.display = "none";
+      });
+    };
+
+    //5).点击关闭按钮,直接关闭展示菜品的div
+    // 为关闭按钮注册点击事件,关闭上菜div
+    iObj.onclick = function () {
+      str = [];
+      for (var i = 0; i < tdObjs.length; i++) {
+        tdObjs[i].style.backgroundColor = bgc;
+      }
+      dv.style.display = "none";
+      barrier.style.display = "none";
+      // 让上菜div的遮挡层宽和高变为0
+      var josn3 = {
+        width: 0,
+        height: 0
+      };
+      animate(my$("j_zoom"), josn3);
+    };
+
+    //6.)设置自定义点餐
+    //定义数组,存放自定义点菜
+    var str = [];
+    // 循环遍历tdObjs,为td注册事件
+    for (var i = 0; i < tdObjs.length; i++) {
+      //注册鼠标进入事件
+      tdObjs[i].onmouseover = mouseoverHandle;
+      //注册鼠标离开事件
+      tdObjs[i].onmouseout = mouseoutHandle;
+      //注册鼠标点击事件
+      tdObjs[i].onclick = clickHandle;
+    }
+
+    function mouseoverHandle() {
+      // 鼠标进入时,添加背景颜色
+      this.className = "current";
+    }
+
+    function mouseoutHandle() {
+      // 鼠标离开时,移除背景颜色
+      this.removeAttribute("class");
+    }
+
+    function clickHandle() {
+      //移除随机点菜时选中的菜品
+      for (var i = 0; i < tdObjs.length; i++) {
+        tdObjs[i].removeAttribute("class");
+      }
+      // 保存当前背景颜色
+      bgc = this.style.backgroundColor;
+      // 点击更改背景颜色
+      this.style.backgroundColor = "#f40";
+      //判断有没有重复点菜
+      if (str.indexOf(this.innerHTML) == -1) {
+        str.push(this.innerHTML);
+      }
+      // 把数组放到字符串中,用符号隔开
+      food = str.join("、");
+      
+    }
+  </script>
+</body>
+
+</html>
